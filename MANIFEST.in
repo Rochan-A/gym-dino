@@ -1,0 +1,4 @@
+include LICENSE
+include README.rst
+include gym_dino/envs/sprites/dino.png
+recursive-include gym_dino/envs/sprites/ *
