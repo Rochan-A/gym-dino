@@ -2,6 +2,18 @@
 
 A pygame based port of the Chrome T-Rex Game as an OpenAI Gym Environment.
 
+You can install this from PYPI:
+
+'''
+pip3 install gym-dino
+'''
+
+You can import it as:
+
+'''
+import gym_dino
+'''
+
 ### Small backstory
 
 I am currently working on some reinforcement learning research problems and really wanted a simple yet effective environment to train an agent on. I realised that the Chrome game ain't bad at all especially in this scenario.
