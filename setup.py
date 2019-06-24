@@ -9,7 +9,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(name='gym_dino',
 	version='0.0.2',
 	long_description=long_description,
-	long_description_content_type='text/markdown'
+	long_description_content_type='text/markdown',
 	install_requires=['gym', 'pygame'],
 
 	package_data={ 'gym_dino': ['gym_dino/envs/sprites/*'] },
