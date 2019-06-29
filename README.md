@@ -2,6 +2,25 @@
 
 A pygame based port of the Chrome T-Rex Game as an OpenAI Gym Environment.
 
+## Important info
+
+You can change the FPS of the game by adjusting the env.FPS value. By default, it is at 60.
+
+`Action Space = [0, 1, 2]
+`
+
+`
+0 : No action
+`
+
+`
+1 : Duck
+`
+
+`
+2 : Jump
+`
+
 You can install this from PYPI:
 
 ```

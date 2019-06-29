@@ -14,7 +14,6 @@ from gym.utils import seeding
 pygame.init()
 
 scr_size = (width,height) = (600,150)
-FPS = 60
 gravity = 0.6
 
 black = (0,0,0)
@@ -301,6 +300,10 @@ class DinoEnv(gym.Env):
 		self.counter = 0
 		self.done = False
 
+		self.action_space.n = 2
+		self.observation_space.shape = (150, 600)
+		self.FPS = 60
+
 		self.cacti = pygame.sprite.Group()
 		self.pteras = pygame.sprite.Group()
 		self.clouds = pygame.sprite.Group()
@@ -323,16 +326,19 @@ class DinoEnv(gym.Env):
 				print("Couldn't load display surface")
 				self.gameOver = True
 			else:
-				if action == 1:
-					if not (self.playerDino.isJumping and self.playerDino.isDead):
-						self.playerDino.isDucking = True
+				if action in [0, 1, 2]:
+					if action == 1:
+						if not (self.playerDino.isJumping and self.playerDino.isDead):
+							self.playerDino.isDucking = True
 
-				if action != 1:
-					self.playerDino.isDucking = False
-					if action == 2:
-						if self.playerDino.rect.bottom == int(0.98*height):
-							self.playerDino.isJumping = True
-							self.playerDino.movement[1] = -1*self.playerDino.jumpSpeed
+					if action != 1:
+						self.playerDino.isDucking = False
+						if action == 2:
+							if self.playerDino.rect.bottom == int(0.98*height):
+								self.playerDino.isJumping = True
+								self.playerDino.movement[1] = -1*self.playerDino.jumpSpeed
+				else:
+					print("Invalid Action")
 
 			for c in self.cacti:
 				c.movement[0] = -1*self.gamespeed
@@ -379,7 +385,7 @@ class DinoEnv(gym.Env):
 				self.pteras.draw(screen)
 				self.playerDino.draw()
 
-			clock.tick(FPS)
+			clock.tick(self.FPS)
 
 			self.obs = pygame.surfarray.array3d(pygame.display.get_surface())
 
